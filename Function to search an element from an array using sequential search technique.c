@@ -4,7 +4,7 @@
 #define MAX 10
 void create(int *,int *);
 void display(int *,int);
-void seqsearch(int *,int,int ele);
+void seqsearch(int *,int,int);
 void main()
     {
 	    int a[MAX],n=0,ele,loc;
