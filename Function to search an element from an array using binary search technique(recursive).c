@@ -4,7 +4,7 @@
 #define MAX 10
 void create(int *,int *);
 void display(int *,int);
-void bsr(int *,int,int,int);
+int bsr(int *,int,int,int);
 void main()
     {
 	    int a[MAX],n=0,ele,loc;
@@ -53,7 +53,7 @@ void display(int *a,int n)
                     printf("\na[%d]\t\t=%d",i,a[i]);
             }
     }
-void bsr(int *a,int beg,int end,int ele)
+int bsr(int *a,int beg,int end,int ele)
 	{
 	    int mid;
    	    if(beg<=end)

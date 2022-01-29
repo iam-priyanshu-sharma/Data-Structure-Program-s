@@ -4,7 +4,7 @@
 #define MAX 10
 void create(int *,int *);
 void display(int *,int);
-void advseqsearch(int *,int,int);
+int advseqsearch(int *,int,int);
 void main()
     {
 	    int a[MAX],n=0,ele,loc;
@@ -53,7 +53,7 @@ void display(int *a,int n)
                     printf("\na[%d]\t\t=%d",i,a[i]);
             }
     }
-void advseqsearch(int *a,int n, int ele)
+int advseqsearch(int *a,int n, int ele)
     {
         int i;
         for(i=0;i<n&&a[i]<=ele;i++)

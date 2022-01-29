@@ -4,7 +4,7 @@
 #define MAX 10
 void create(int *,int *);
 void display(int *,int);
-void bsi(int *,int,int);
+int bsi(int *,int,int);
 void main()
     {
 	    int a[MAX],n=0,ele,loc;
@@ -53,7 +53,7 @@ void display(int *a,int n)
                     printf("\na[%d]\t\t=%d",i,a[i]);
             }
     }
-void bsi(int *a,int n, int ele)
+int bsi(int *a,int n, int ele)
     {
         int beg,mid,end;
         beg=0;
