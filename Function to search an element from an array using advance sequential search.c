@@ -10,7 +10,7 @@ void main()
 	    int a[MAX],n=0,ele,loc;
 	    create(a,&n);
 	    display(a,n);
-	    printf("\nEnter element to serach:");
+	    printf("\nEnter element to search:");
 	    scanf("%d",&ele);
         loc=advseqsearch(a,n,ele);
 	    if(loc==-1)
