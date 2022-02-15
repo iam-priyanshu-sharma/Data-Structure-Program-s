@@ -61,9 +61,9 @@ void selectionsort(int *a,int n)
                         s=j;
                     if(i!=s)
                         {
-                            temp=a[i];
-                            a[i]=a[s];
-                            a[s]=temp;
+                            temp=a[s];
+                            a[s]=a[i];
+                            a[i]=temp;
                         } 
             }
         printf("\nNo. of pass executed:%d",i-1);    
