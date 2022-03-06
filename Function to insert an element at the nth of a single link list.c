@@ -1,4 +1,4 @@
-/*Program to create a single linklist and display the elements in in-order and reverse order*/
+/*Function to insert an element at the n of a single link list*/
 #include<stdio.h>
 #include<conio.h>
 typedef struct nodes
@@ -8,14 +8,14 @@ typedef struct nodes
     } node;
 void create(node **);
 void display(node *);
-void display_reverse(node *);
+void insend(node **);
 void main()
     {
         node *head;
         head = ((node *)NULL);
         create(&head);
         display(head);
-        display_reverse(head);
+        insend(&head);
         getch();
     }
 void create(node **h)
@@ -30,7 +30,7 @@ void create(node **h)
                     break;
                 else
                     {
-                        ptr = (node *)malloc(sizeof (node));
+                        ptr = (node *)malloc(sizeof(node));
                         ptr->info = ele;
                         ptr->next = NULL;
                         if(*h==NULL)
@@ -47,25 +47,29 @@ void display(node *h)
             printf("\nList is empty.");
         else
             {
-                printf("\nThe nodes of linked list in in-order are:");
-                printf("\nAddress of Node\tInfo\tNext:");
                 while(h!=NULL)
                     {
-                        printf("\n%u\t%d\t%u", h, h->info, h->next);
+                        printf("\n%d",h->info);
                         h = h->next;
                     }
             }    
     }
-void display_reverse(node *h)
+void insend(node **h)
     {
-        if(h==NULL)
+        int ele;
+        node *ptr, *loc;
+        printf("\nEnter element to insert at end:");
+        scanf("%d",&ele);
+        ptr=(node *)malloc(sizeof(node));
+        ptr->info=ele;
+        ptr->next=NULL;
+        if(*h==NULL)
+            *h=ptr;
+        else
             {
-                printf("Nodes of Linked list in reverse order are:");
-                printf("\nAddress of Node\tInfo\tNext");
-            }
-        else    
-            {
-                display_reverse(h->next);
-                printf("\n%u\t%d\t%u", h, h->info, h->next);
+                loc=*h;
+                while(loc->next !=NULL)
+                    loc=loc->next;
+                loc->next=ptr;    
             }    
-    }
+    }    
