@@ -1,4 +1,4 @@
-/*Function to insert an element after given element in a single link list*/
+/*Function to sort the elements of a single link list using interchange sort method*/
 #include<stdio.h>
 #include<conio.h>
 typedef struct nodes
@@ -8,14 +8,14 @@ typedef struct nodes
     } node;
 void create(node **);
 void display(node *);
-void insaft(node *);
+void interchangesort(node *);
 void main()
     {
         node *head;
         head = ((node *)NULL);
         create(&head);
         display(head);
-        insaft(head);
+        interchangesort(head);
         getch();
     }
 void create(node **h)
@@ -54,31 +54,16 @@ void display(node *h)
                     }
             }    
     }
-void insaft(node *h)
+void interchangesort(node *h)
     {
-        int ele;
-        node *ptr,*loc;
-        if(h==NULL)
-            printf("\nList is empty,Insertion not possible.");
-        else
-            {
-                printf("\nEnter element after which you want to insert:");
-                scanf("%d",&ele);
-                for(loc=h;loc !=NULL;loc=loc->next)
-                    if(loc->info==ele)
-                        break;
-                    else
-                        loc = loc->next;
-                if(loc==NULL)
-                    printf("\nElement not found,Insertion not possible.");
-                else
+        int temp;
+        node *ptr, *ptr1;
+        for (ptr = h; ptr->next != NULL;ptr=ptr->next)
+            for (ptr1 = ptr->next; ptr1 != NULL;ptr1=ptr1->next)
+                if(ptr->info>ptr1->info)
                     {
-                        printf("\nEnter elements you want to insert:");
-                        scanf("%d", &ele);
-                        ptr = (node *)malloc(sizeof(node));
-                        ptr->info = ele;
-                        ptr->next = loc->next;
-                        loc->next = ptr;
-                    }    
-            }    
-    }        
+                        temp = ptr->info;
+                        ptr->info = ptr1->info;
+                        ptr1->info = temp;
+                    }
+    }    

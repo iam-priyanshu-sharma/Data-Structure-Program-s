@@ -1,4 +1,4 @@
-/*Function to insert an element after given element in a single link list*/
+/*Function to delete duplicate elements from a single link list*/
 #include<stdio.h>
 #include<conio.h>
 typedef struct nodes
@@ -8,14 +8,14 @@ typedef struct nodes
     } node;
 void create(node **);
 void display(node *);
-void insaft(node *);
+void deldup(node *);
 void main()
     {
         node *head;
         head = ((node *)NULL);
         create(&head);
         display(head);
-        insaft(head);
+        deldup(head);
         getch();
     }
 void create(node **h)
@@ -54,31 +54,36 @@ void display(node *h)
                     }
             }    
     }
-void insaft(node *h)
+void deldup(node *h)
     {
-        int ele;
-        node *ptr,*loc;
+        int count = 0;
+        node *ptr, *ptr1, *pptr1, *temp;
         if(h==NULL)
-            printf("\nList is empty,Insertion not possible.");
+            printf("\nList is empty.Deletion not possible.");
         else
             {
-                printf("\nEnter element after which you want to insert:");
-                scanf("%d",&ele);
-                for(loc=h;loc !=NULL;loc=loc->next)
-                    if(loc->info==ele)
-                        break;
-                    else
-                        loc = loc->next;
-                if(loc==NULL)
-                    printf("\nElement not found,Insertion not possible.");
-                else
+                for (ptr = h; ptr->next != NULL;ptr=ptr->next)
                     {
-                        printf("\nEnter elements you want to insert:");
-                        scanf("%d", &ele);
-                        ptr = (node *)malloc(sizeof(node));
-                        ptr->info = ele;
-                        ptr->next = loc->next;
-                        loc->next = ptr;
-                    }    
+                        ptr1 = ptr->next;
+                        pptr1 = ptr;
+                        while(ptr1!=NULL)
+                            if(ptr->info==ptr1->info)
+                                {
+                                    count++;
+                                    temp = ptr1;
+                                    ptr1 = ptr1->next;
+                                    pptr1->next = ptr1;
+                                    free(temp);
+                                }
+                            else
+                                {
+                                    pptr1 = ptr1;
+                                    ptr1 = ptr1->next;
+                                }    
+                    }
+                if(count==0)
+                    printf("\nNo duplicate elements found.");
+                else
+                    printf("\n%d duplicate elements deleted.", count);
             }    
-    }        
+    }    

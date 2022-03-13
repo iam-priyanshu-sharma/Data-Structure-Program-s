@@ -1,4 +1,4 @@
-/*Function to insert an element after given element in a single link list*/
+/*Function to search an element in a single link list*/
 #include<stdio.h>
 #include<conio.h>
 typedef struct nodes
@@ -8,14 +8,21 @@ typedef struct nodes
     } node;
 void create(node **);
 void display(node *);
-void insaft(node *);
+node *search(node *, int);
 void main()
     {
-        node *head;
+        node *loc,*head;
+        int ele;
         head = ((node *)NULL);
         create(&head);
         display(head);
-        insaft(head);
+        printf("\nEnter element you want to search:");
+        scanf("%d", &ele);
+        loc = search(head, ele);
+        if(loc==NULL)
+            printf("\nElement not found.");
+        else
+            printf("\nElement found at %u location", loc);
         getch();
     }
 void create(node **h)
@@ -54,31 +61,12 @@ void display(node *h)
                     }
             }    
     }
-void insaft(node *h)
+node *search(node *h,int ele)
     {
-        int ele;
-        node *ptr,*loc;
-        if(h==NULL)
-            printf("\nList is empty,Insertion not possible.");
-        else
-            {
-                printf("\nEnter element after which you want to insert:");
-                scanf("%d",&ele);
-                for(loc=h;loc !=NULL;loc=loc->next)
-                    if(loc->info==ele)
-                        break;
-                    else
-                        loc = loc->next;
-                if(loc==NULL)
-                    printf("\nElement not found,Insertion not possible.");
-                else
-                    {
-                        printf("\nEnter elements you want to insert:");
-                        scanf("%d", &ele);
-                        ptr = (node *)malloc(sizeof(node));
-                        ptr->info = ele;
-                        ptr->next = loc->next;
-                        loc->next = ptr;
-                    }    
-            }    
-    }        
+        while(h!=NULL)
+            if(h->info==ele)
+                return h;
+            else
+                h = h->next;
+        return NULL;
+    }    

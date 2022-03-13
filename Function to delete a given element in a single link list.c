@@ -1,4 +1,4 @@
-/*Function to insert an element after given element in a single link list*/
+/*Function to delete a given element in a single link list*/
 #include<stdio.h>
 #include<conio.h>
 typedef struct nodes
@@ -8,14 +8,14 @@ typedef struct nodes
     } node;
 void create(node **);
 void display(node *);
-void insaft(node *);
+void delele(node **);
 void main()
     {
         node *head;
         head = ((node *)NULL);
         create(&head);
         display(head);
-        insaft(head);
+        delele(&head);
         getch();
     }
 void create(node **h)
@@ -54,31 +54,30 @@ void display(node *h)
                     }
             }    
     }
-void insaft(node *h)
+void delele(node **h)
     {
         int ele;
-        node *ptr,*loc;
-        if(h==NULL)
-            printf("\nList is empty,Insertion not possible.");
+        node *loc, *ploc;
+        if(*h==NULL)
+            printf("\nList is empty.Deletion not possible.");
         else
             {
-                printf("\nEnter element after which you want to insert:");
-                scanf("%d",&ele);
-                for(loc=h;loc !=NULL;loc=loc->next)
+                printf("\nEnter element you want to delete:");
+                scanf("%d", &ele);
+                for (loc = h; loc != NULL;loc=loc->next)
                     if(loc->info==ele)
                         break;
                     else
-                        loc = loc->next;
+                        ploc = loc;
                 if(loc==NULL)
-                    printf("\nElement not found,Insertion not possible.");
+                    printf("Element not found.Deletion not possible.");
                 else
                     {
-                        printf("\nEnter elements you want to insert:");
-                        scanf("%d", &ele);
-                        ptr = (node *)malloc(sizeof(node));
-                        ptr->info = ele;
-                        ptr->next = loc->next;
-                        loc->next = ptr;
+                        if(loc==*h)
+                            *h = loc->next;
+                        else
+                            ploc->next = loc->next;
+                        free(loc);
                     }    
             }    
-    }        
+    }    

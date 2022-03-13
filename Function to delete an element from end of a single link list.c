@@ -1,4 +1,4 @@
-/*Function to insert an element after given element in a single link list*/
+/*Function to delete an element from end of a single link list*/
 #include<stdio.h>
 #include<conio.h>
 typedef struct nodes
@@ -8,14 +8,14 @@ typedef struct nodes
     } node;
 void create(node **);
 void display(node *);
-void insaft(node *);
+void delend(node **);
 void main()
     {
         node *head;
         head = ((node *)NULL);
         create(&head);
         display(head);
-        insaft(head);
+        delend(&head);
         getch();
     }
 void create(node **h)
@@ -54,31 +54,21 @@ void display(node *h)
                     }
             }    
     }
-void insaft(node *h)
+void delend(node **h)
     {
         int ele;
-        node *ptr,*loc;
-        if(h==NULL)
-            printf("\nList is empty,Insertion not possible.");
+        node *temp, *ptemp;
+        if(*h==NULL)
+            printf("\nList is empty.Deletion not possible.");
         else
             {
-                printf("\nEnter element after which you want to insert:");
-                scanf("%d",&ele);
-                for(loc=h;loc !=NULL;loc=loc->next)
-                    if(loc->info==ele)
-                        break;
+                for (temp = *h, temp->next != NULL; temp = temp->next; ptemp = temp)
+                    if(*h==temp)
+                        *h = NULL;
                     else
-                        loc = loc->next;
-                if(loc==NULL)
-                    printf("\nElement not found,Insertion not possible.");
-                else
-                    {
-                        printf("\nEnter elements you want to insert:");
-                        scanf("%d", &ele);
-                        ptr = (node *)malloc(sizeof(node));
-                        ptr->info = ele;
-                        ptr->next = loc->next;
-                        loc->next = ptr;
-                    }    
-            }    
-    }        
+                        ptemp->next = NULL;
+                ele = temp->info;
+                free(temp);
+                printf("\nDeleted elements=%d", ele);                 
+            }
+    }    
