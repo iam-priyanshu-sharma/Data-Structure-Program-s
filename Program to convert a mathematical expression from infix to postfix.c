@@ -1,6 +1,7 @@
 /*Program to convert a mathematical expression from infix to postfix*/
 #include<stdio.h>
 #include<conio.h>
+#include<string.h>
 #define MAX 15
 typedef struct
 	{
