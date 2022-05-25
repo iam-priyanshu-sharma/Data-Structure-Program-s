@@ -1,4 +1,17 @@
 {
   "C_Cpp.errorSquiggles": "Enabled",
-  "cSpell.words": ["Ifact", "isfull", "mfib", "rfib"]
+  "cSpell.words": [
+    "Atfront",
+    "beginsert",
+    "Ifact",
+    "isfull",
+    "mfib",
+    "nestedly",
+    "newnode",
+    "prevnode",
+    "Rcount",
+    "rfib",
+    "Rsum",
+    "trav"
+  ]
 }
