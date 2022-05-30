@@ -117,6 +117,6 @@ void display()
     }
     printf("\nStack elements :\n");
     for (i = top; i >= 0; i--)
-        printf(" %dn", stack_arr[i]);
-    printf("n");
+        printf(" %d\n", stack_arr[i]);
+    printf("\n");
 } /*End of display()*/
