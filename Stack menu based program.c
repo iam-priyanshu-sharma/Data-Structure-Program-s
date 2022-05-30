@@ -32,16 +32,16 @@ int main()
         switch (choice)
         {
         case 1:
-            printf("nEnter the item to be pushed : ");
+            printf("\nEnter the item to be pushed : ");
             scanf("%d", &item);
             push(item);
             break;
         case 2:
             item = pop();
-            printf("nPopped item is : %dn", item);
+            printf("\nPopped item is : %d\n", item);
             break;
         case 3:
-            printf("nItem at the top is : %dn", peek());
+            printf("\nItem at the top is : %d\n", peek());
             break;
         case 4:
             display();
@@ -49,7 +49,7 @@ int main()
         case 5:
             exit(1);
         default:
-            printf("nWrong choicen");
+            printf("\nWrong choicen");
         } /*End of switch*/
     }     /*End of while*/
 
@@ -61,7 +61,7 @@ void push(int item)
 {
     if (isFull())
     {
-        printf("nStack Overflown");
+        printf("\nStack Overflown");
         return;
     }
     top = top + 1;
@@ -73,7 +73,7 @@ int pop()
     int item;
     if (isEmpty())
     {
-        printf("nStack Underflown");
+        printf("\nStack Underflown");
         exit(1);
     }
     item = stack_arr[top];
@@ -85,7 +85,7 @@ int peek()
 {
     if (isEmpty())
     {
-        printf("nStack Underflown");
+        printf("\nStack Underflown");
         exit(1);
     }
     return stack_arr[top];
@@ -112,10 +112,10 @@ void display()
     int i;
     if (isEmpty())
     {
-        printf("nStack is emptyn");
+        printf("\nStack is empty.\n");
         return;
     }
-    printf("nStack elements :nn");
+    printf("\nStack elements :\n");
     for (i = top; i >= 0; i--)
         printf(" %dn", stack_arr[i]);
     printf("n");
