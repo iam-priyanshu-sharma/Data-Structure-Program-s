@@ -13,5 +13,6 @@
     "rfib",
     "Rsum",
     "trav"
-  ]
+  ],
+  "editor.acceptSuggestionOnEnter": "on"
 }
