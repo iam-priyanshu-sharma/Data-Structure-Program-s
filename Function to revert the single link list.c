@@ -1,1 +1,0 @@
-/*Function to revert the single link list*/
